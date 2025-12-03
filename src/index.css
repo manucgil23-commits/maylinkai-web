@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 277 100% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 22%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 277 100% 62%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 277 100% 62%;
+
+    --radius: 0.75rem;
+
+    /* MayLink AI brand colors */
+    --brand-purple: 277 100% 62%;
+    --brand-purple-dark: 277 80% 45%;
+    --brand-purple-light: 277 100% 75%;
+    --brand-glow: 277 100% 62%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(277, 100%, 62%) 0%, hsl(277, 80%, 45%) 50%, hsl(0, 0%, 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 12%) 0%, hsl(0, 0%, 8%) 100%);
+    
+    /* Shadows */
+    --shadow-purple: 0 10px 40px -10px hsl(277 100% 62% / 0.4);
+    --shadow-glow: 0 0 30px hsl(277 100% 62% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+
+  /* Focus Visible - Accesibilidad con teclado */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-purple ring-offset-2 ring-offset-background;
+  }
+
+  /* Mejora de hover en links */
+  a:focus-visible {
+    @apply outline-none ring-2 ring-brand-purple ring-offset-2 ring-offset-background rounded;
+  }
+}
+
+@layer utilities {
+  /* Performance Optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Hover Glow Effect */
+  .hover-glow {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Smooth Scale on Hover */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Skeleton Loading Animation */
+  .skeleton-pulse {
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+  }
+
+  @keyframes skeleton-loading {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  /* Smooth Fade In */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Enhanced Focus States */
+  .focus-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}

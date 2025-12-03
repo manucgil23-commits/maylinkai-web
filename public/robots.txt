@@ -1,0 +1,19 @@
+# Permitir todos los bots
+User-agent: *
+Allow: /
+
+# Sitemap (Dinámico)
+Sitemap: https://fiwykkjmgscmkrugronp.supabase.co/functions/v1/sitemap
+
+# Bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
